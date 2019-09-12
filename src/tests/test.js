@@ -23,12 +23,13 @@ describe('The Image CLI', () => {
     // );
   });
 
-  it('should prompt if no input file selected', async () => {
-    const response = await cli.cli(
-      [,'--input=', '--output=output.csv']
-    );   
+  it('should return elapsed milliseconds', async () => {
+    await cli.cli(
+      [,'--input=input.csv', '--output=output.csv']
+    );  
 
-    //test that the prompt was triggered
+    const elapsed = cli.elapsed(new Date());
+    assert.equal(elapsed, 0);
 
   });
 });

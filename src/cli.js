@@ -41,7 +41,7 @@ async function promptForMissingOptions(options) {
 }
 
 // helper func to get endtime 
-function elapsed(startTime) {
+export function elapsed(startTime) {
     var endTime = new Date();
     var timeDiff = endTime - startTime; //in ms
     timeDiff /= 1000;
