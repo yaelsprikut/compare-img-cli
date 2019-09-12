@@ -24,3 +24,4 @@ $ compare-img-cli --input=path/to/file1.csv --output=file2.csv
 Pixelmatch accepts images in PNG format and the compared image dimensions must be equal.
 
 ## Running Tests
+For testing I used Mocha; tests can be run using the `npm test` command. 
