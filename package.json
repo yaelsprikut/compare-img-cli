@@ -1,0 +1,26 @@
+{
+  "name": "@yaelsprikut/compare-img-cli",
+  "version": "1.0.0",
+  "description": "A CLI for comparing images in a CSV and providing data.",
+  "main": "src/index.js",
+  "bin": {
+    "@yaelsprikut/compare-img-cli": "@yaelsprikut/compare-img-cli",
+    "compare-img-cli": "bin/compare-img-cli"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "compare-img-cli"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "pixelmatch": "^5.0.2"
+  }
+}
