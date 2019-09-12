@@ -28,7 +28,7 @@ async function promptForMissingOptions(options) {
         questions.push({
             type: 'input',
             name: 'input',
-            message: "Please provide the path for the input CSV."
+            message: "Please provide a path for the input CSV."
         })
     }
     const answers = await inquirer.prompt(questions);

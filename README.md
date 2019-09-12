@@ -1,5 +1,6 @@
-# compare-img-cli
-A CLI designed to compare two images and output some meaningful data.
+# Bjorn's Compare Image CLI 
+A useful CLI designed to compare two images and output some meaningful data.
+
 Used with the help of Pixelmatch: (https://www.npmjs.com/package/pixelmatch).
 
 ## Getting Started
