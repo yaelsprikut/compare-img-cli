@@ -1,5 +1,7 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
+// const arg = require('arg');
+// const inquirer = require('inquirer');
 const fs = require('fs');
 const csv = require('csv');
 const PNG = require('pngjs').PNG;
@@ -81,6 +83,7 @@ export async function cli(args) {
     // console.log("options:: ", options)
     // write results to csv
     readCSV(options.input, options.output);
+    return true;
     // option to generate a visual diff representation
     // fs.writeFileSync(options['outputCSV'], PNG.sync.write(diff));
 }

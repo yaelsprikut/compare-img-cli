@@ -11,12 +11,13 @@
     "access": "public"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha src/tests/* -r esm"
   },
   "keywords": [
     "cli",
     "compare-img-cli"
   ],
+  "testEnvironment": "node",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -25,6 +26,11 @@
     "esm": "^3.2.25",
     "fast-csv": "^3.4.0",
     "inquirer": "^7.0.0",
+    "mocha": "^6.2.0",
     "pixelmatch": "^5.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "karma-chai": "^0.1.0"
   }
 }

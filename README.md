@@ -19,3 +19,8 @@ arguments:
 ```
 $ compare-img-cli --input=path/to/file1.csv --output=file2.csv
 ```
+
+### Considerations
+Pixelmatch accepts images in PNG format and the compared image dimensions must be equal.
+
+## Running Tests
