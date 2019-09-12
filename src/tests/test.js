@@ -2,7 +2,6 @@ const cli = require('../cli')
 const inquirer = require('inquirer')
 const assert = require('assert');
 // const expect = require('chai').expect;
-// process.argv.push('--input', 'file.csv');
 
 
 describe('The Image CLI', () => {
@@ -11,11 +10,11 @@ describe('The Image CLI', () => {
     assert.equal(response, true);
   });
 
-  it('should parse the arguments', async () => {
+  it('should parse the arguments and return true', async () => {
     const response = await cli.cli(
       [,'--input=input.csv', '--output=output.csv']
     );   
-    console.log("THE RESPONSE", response); 
+
     assert.equal(response, true);
     // expect(response.trim().split(EOL)).to.have.all.keys(
     //   'ROW',
@@ -29,7 +28,7 @@ describe('The Image CLI', () => {
       [,'--input=', '--output=output.csv']
     );   
 
-    //
+    //test that the prompt was triggered
 
   });
 });
