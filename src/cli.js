@@ -38,14 +38,26 @@ async function promptForMissingOptions(options) {
     }
 }
 
+// helper func to get endtime 
+function elapsed(startTime) {
+    var endTime = new Date();
+    var timeDiff = endTime - startTime; //in ms
+    timeDiff /= 1000;
+  
+    // get the seconds
+    var seconds = timeDiff;
+    return seconds;
+  }
+
 // get and read from the CSV passed in the first arg
 async function readCSV(inputFile, outputFile) {
     let imageData = [];
-    let elapsed = '';
+
     await fs.createReadStream(inputFile)
     .pipe(csv.parse({ headers: true }))
     .on('data', row => {
-        console.log("rows", row[0], row[1]);
+        let startTime = new Date();
+        // console.log("rows", row[0], row[1]);
         const img1 = PNG.sync.read(fs.readFileSync(row[0]));
         const img2 = PNG.sync.read(fs.readFileSync(row[1]));
        
@@ -54,27 +66,21 @@ async function readCSV(inputFile, outputFile) {
         // loop through the rows and compare the two image URLs
 
         const pixmatch = pixelmatch(img1.data, img2.data, diff.data, img1.width, img1.height, {threshold: 0.1});
-        console.log(row[0], row[1], pixmatch, elapsed, '\n');
-        imageData.push(row[0], row[1], pixmatch, elapsed, '\n');
+        console.log(">> ROW: ", row[0], row[1], "  PIXEL DIFF: ", pixmatch, "  ELAPSED: ", elapsed(startTime));
         // define a comparison algorithm and figure out elapsed time it takes to compare images
-        // construct algorithm that will determine the similarity #
-        // determine how much time was elapsed while comparing images
+        imageData.push(row[0], row[1], pixmatch, elapsed(startTime), '\n');
 
         // output data about difference between images (0 implies images are the same)
         fs.writeFileSync(outputFile, imageData);
-        // fs.writeFileSync(outputFile, width);
     })
     }
 
 export async function cli(args) {
     let options = parseArguments(args);
-    console.log("arguments", options);
-    // console.log("diff: ", width, height);
     options = await promptForMissingOptions(options);
-    console.log("options:: ", options)
+    // console.log("options:: ", options)
     // write results to csv
     readCSV(options.input, options.output);
+    // option to generate a visual diff representation
     // fs.writeFileSync(options['outputCSV'], PNG.sync.write(diff));
-    // fs.writeFileSync(options.output, width);
-
 }
