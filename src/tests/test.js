@@ -1,7 +1,6 @@
 const cli = require('../cli')
-const inquirer = require('inquirer')
 const assert = require('assert');
-// const expect = require('chai').expect;
+const expect = require('chai').expect;
 
 
 describe('The Image CLI', () => {
@@ -16,6 +15,7 @@ describe('The Image CLI', () => {
     );   
 
     assert.equal(response, true);
+    // since we're not returning a response here only a Boolean, this won't work
     // expect(response.trim().split(EOL)).to.have.all.keys(
     //   'ROW',
     //   'PIXEL DIFF',
@@ -24,12 +24,15 @@ describe('The Image CLI', () => {
   });
 
   it('should return elapsed milliseconds', async () => {
-    await cli.cli(
-      [,'--input=input.csv', '--output=output.csv']
-    );  
-
     const elapsed = cli.elapsed(new Date());
     assert.equal(elapsed, 0);
 
+  });
+
+  it('should resolve', (done) => {
+    const promptForMissingOptions = cli.promptForMissingOptions({ input: 'input.csv', output: 'output.csv' })
+    promptForMissingOptions.then( (result) => {
+      expect(result).to.equal('promise resolved');
+    }).finally(done);
   });
 });

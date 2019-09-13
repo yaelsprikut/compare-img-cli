@@ -23,7 +23,7 @@ function parseArguments(rawArgs) {
         output: args['--output'] || 'output.csv'
     }
 }
-async function promptForMissingOptions(options) {
+export async function promptForMissingOptions(options) {
     const questions = [];
 
     if(!options.input) {
@@ -80,7 +80,6 @@ async function readCSV(inputFile, outputFile) {
 export async function cli(args) {
     let options = parseArguments(args);
     options = await promptForMissingOptions(options);
-    // console.log("options:: ", options)
     // write results to csv
     readCSV(options.input, options.output);
     return true;
